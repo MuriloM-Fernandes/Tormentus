@@ -1,0 +1,216 @@
+// call Adlib.screenshotterEnd() on the last animation code.
+// do not delete initAnimation function since this is the first function that will be called after initialization of defaultValues.
+// if ever there is a video for this ad, you can use myVideo as the variable to play the video.
+// sample tween codes:
+// tween.to("#disclaimerWrapper", {opacity:0.99,duration: 1,ease: "power2.out"},"-=1");
+// tween.set("#frame1HeadlineWrapper",{opacity:1})
+let tween,el,exceeds,minChar,headLine2,subHeadLine,h1Pos,h2Pos,subPos,ctaPos,logoPos,logoTop,ctaNA,logoLeft,ctaRight,hboMR,maxML,h2Height,logoHeight,h1MB,logoMB,ctaHeight;
+function initAnimation() {
+     // place all fluid elements before text resize and css attrib.
+     Adlib.textResize(); // This is optional if your build doesn't use text resize you can delete this
+     fluidContainer(); // Call Fluidity function
+     Adlib.templateCSS(defaultValues.cssAttrib); // DO NOT DELETE THIS
+     startAnimation();
+}
+function startAnimation() {  
+     document.querySelector("#mainContent").style.opacity = 1;
+     tween = gsap.timeline({ pause: true });
+     if(defaultValues.trigger3 === "Animated"){
+     tween.to("#logoHBOContainer",{duration:0.4,ease:"power1.in",right:hboMR})
+          .to("#logoMaxContainer",{duration:0.3,ease:"power1.in",opacity:1,left:maxML},"-=0.3")
+          .to("#fluidContainerRight",{duration:0.45,ease:"power1.inOut",width:381},"+=0.2")
+          .to("#frame1HeadlineContainer",{duration:0.3,ease:"power1.inOut",display:"block",opacity:1,left:h1Pos[1]},"-=0.2")
+          .to("#frame1HeadlineContainer",{duration:0.3,ease:"power1.inOut",yPercent:0,top:h1Pos[0]},"+=0.2")
+          if(!Adlib.isEmpty(headLine2)){
+               tween.to("#frame1Headline2",{duration:0.4,ease:"power1.inOut",display:"block",opacity:1,top:h2Pos[0]},"-=0.2")
+          }
+          if(!Adlib.isEmpty(subHeadLine)){
+               tween.to("#frame1Subheadline",{duration:0.5,ease:"power1.inOut",display:"block",opacity:1,top:subPos[0]+15},"+=0.3")
+               if(ctaNA != 1){
+                    tween.to("#logoCTAContainer",{duration:0.3,ease:"power1.inOut",top:logoPos[0]+logoHeight/2},"-=0.3")
+               }else{
+                    tween.to("#logoCTAContainer",{duration:0.3,ease:"power1.inOut",top:logoPos[0]+logoHeight/2},"-=0.3")
+                         .to("#logoContainer",{duration:0.5,ease:"power1.inOut",x:"+="+Math.round(-(logoLeft/2))},"+=0.2")
+                         .to("#ctaTextContainer",{duration:0.5,ease:"power1.inOut",display:"block",opacity:1,x:"+="+Math.round(ctaRight/2)},"-=0.2")
+               }
+          }else{
+               if(ctaNA != 1){
+                    tween.to("#logoCTAContainer",{duration:0.3,ease:"power1.inOut"},"-=0.3")
+               }else{
+                    tween.to("#logoCTAContainer",{duration:0.3,ease:"power1.inOut"},"-=0.3")
+                         .to("#logoContainer",{duration:0.5,ease:"power1.inOut",x:"+="+Math.round(-(logoLeft/2))},"+=0.2")
+                         .to("#ctaTextContainer",{duration:0.5,ease:"power1.inOut",display:"block",opacity:1,x:"+="+Math.round(ctaRight/2)},"-=0.2")
+               }        
+          }
+          tween.to("#accentBarImage",{duration:0.5,ease:"power1.inOut",opacity:1,height:"100%",marginTop:0},"-=0.35")
+          tween.to("#legalContainer",{duration:0.4,ease:"power1.inOut",opacity:1,onComplete:animationEnd},"+=0.2");
+     }else {
+          setTimeout(animationEnd,1000);
+     }
+}
+function animationEnd() {
+     // call this function on the very end of the last animation.
+     takeScreenshot();
+     setTimeout(function() {adlibEnd();},1000);
+}
+
+function fluidContainer() {
+     // GLOBAL VARIABLES
+     el = document.querySelector("#frame1Headline");
+     tween = gsap.timeline();
+     headLine2 = defaultValues.frame1Headline2;
+     subHeadLine = defaultValues.frame1Subheadline;
+     ctaNA = (defaultValues.trigger=="CTA Off" || Adlib.isEmpty(defaultValues.ctaText))?0:1;
+     hboMR = parseFloat(window.getComputedStyle(document.querySelector("#logoMaxContainer"), null).width);
+     maxML = parseFloat(window.getComputedStyle(document.querySelector("#logoHBOContainer"), null).width);
+     h2Height = Math.round(parseFloat(window.getComputedStyle(document.querySelector("#frame1Headline2"), null).height));
+     logoHeight = Math.round(parseFloat(window.getComputedStyle(document.querySelector("#logoContainer"), null).height));
+     h1MB = Math.round(parseFloat(window.getComputedStyle(document.querySelector("#frame1HeadlineContainer"), null).marginBottom));
+     logoMB = Math.round(parseFloat(window.getComputedStyle(document.querySelector("#brandLogo"), null).marginBottom));
+     ctaHeight = Math.round(parseFloat(window.getComputedStyle(document.querySelector("#ctaTextContainer"), null).height));
+
+     // INITIALIZE VALUES
+         minChar = 5;                                                                                         // <-- Set minimum characters
+     let maxChar = 65,                                                                                        // <-- Set maximum characters
+         minFontSize = 15,        // <-- Set minimum font size
+         maxFontSize = Number(document.querySelector("#frame1HeadlineContainer").getAttribute('maxFontSize')),
+         headLineCount = el.innerText.trim().length,
+         currentFontSize = window.getComputedStyle(el, null).fontSize,
+         headLine2MB = parseFloat(window.getComputedStyle(document.querySelector("#frame1Headline2"), null).marginBottom),
+         h2FontSize = window.getComputedStyle(document.querySelector("#frame1Headline2"), null).fontSize,
+         sHFontSize = window.getComputedStyle(document.querySelector("#frame1Subheadline"), null).fontSize,
+         ctaFontSize = window.getComputedStyle(document.querySelector("#ctaText"), null).fontSize,
+         legalFontSize = window.getComputedStyle(document.querySelector("#legal"), null).fontSize,
+         ctaPaddings = window.getComputedStyle(document.querySelector("#ctaTextContainer"), null).padding.split(" "),
+         logoML = parseFloat(window.getComputedStyle(document.querySelector("#brandLogo"), null).marginRight);
+    ctaRight = document.querySelector("#brandLogo").offsetWidth-3;
+    logoLeft = document.querySelector("#ctaTextContainer").offsetWidth+logoML+3;
+
+     // CALL FUNCTION FOR COUNTING MAX CHARACTER
+     getCharsPerLine();
+
+     let fContMB = window.getComputedStyle(document.querySelector("#frame1HeadlineContainer"), null).marginBottom,
+         f1SLMT = window.getComputedStyle(document.querySelector("#frame1Subheadline"), null).marginTop,
+         f1SLMB = window.getComputedStyle(document.querySelector("#frame1Subheadline"), null).marginBottom;
+
+     // SET HEADLINE MIN-MAX FONT SIZE
+     if(headLineCount>=maxChar || currentFontSize<parseInt(minFontSize)) {
+          tween.set("#frame1Headline",{fontSize: minFontSize});
+          currentFontSize = minFontSize;
+     }
+     if(headLineCount<=minChar && exceeds==0) {
+          tween.set("#frame1Headline",{fontSize: maxFontSize});
+          currentFontSize = maxFontSize;
+     }
+
+     // // SET MARGINS FOR FLUIDITY
+     if(Adlib.isEmpty(headLine2) || Adlib.isEmpty(defaultValues.frame1Headline)) {
+          tween.set("#frame1HeadlineContainer",{marginBottom: 0});
+          fContMB = 0; 
+     }else if(Adlib.isEmpty(subHeadLine)) {
+          tween.set("#frame1Subheadline",{marginTop: 0,marginBottom: 0});
+          f1SLMT = 0;
+          f1SLMB = 0;
+     }
+
+     if(defaultValues.trigger3 === "Static-PreRenderedExit"){
+          // CONVERT FONTSIZE to REM
+          tween.set("#frame1Headline",{fontSize: remConvert(currentFontSize)})
+               .set("#frame1Headline2",{fontSize: remConvert(h2FontSize)})
+               .set("#frame1Subheadline",{fontSize: remConvert(sHFontSize)})
+               .set("#legal",{fontSize: remConvert(legalFontSize)})
+               .set("#ctaText",{fontSize: remConvert(ctaFontSize)});
+
+          // CONVERT MARGINS to REM
+          let margins = [fContMB,f1SLMT,f1SLMB];
+          tween.set("#frame1HeadlineContainer",{marginBottom: remConvert(margins[0])})
+               .set("#frame1Subheadline",{marginTop: remConvert(margins[1]),marginBottom: remConvert(margins[2])});
+
+          // SET Padding to REM
+          var ctaPadding = [];
+          ctaPaddings.map(function(px){
+               ctaPadding.push(remConvert(px));      
+          });
+          tween.set("#ctaTextContainer",{padding: ctaPadding.join(' ')});
+     }else if(defaultValues.trigger3 === "Animated"){
+          // GET Headline Height
+          h1Height = Math.round(parseFloat(window.getComputedStyle(document.querySelector("#frame1HeadlineContainer"), null).height));
+          h1Width = Math.round(parseFloat(window.getComputedStyle(document.querySelector("#frame1HeadlineContainer"), null).width));
+          const convertPercent = creativeSize.split('x'),
+                subHeight = Math.round(parseFloat(window.getComputedStyle(document.querySelector("#frame1Subheadline"), null).height));
+
+          h1Pos = getOffset(document.querySelector("#frame1HeadlineContainer"));
+          h2Pos = getOffset(document.querySelector("#frame1Headline2"));
+          subPos = getOffset(document.querySelector("#frame1Subheadline"));
+          ctaPos = getOffset(document.querySelector("#ctaTextContainer"));
+          logoPos = getOffset(document.querySelector("#brandLogo"));
+
+          // CONVERT TO POSITION ABSOLUTE
+          tween.set("#fluidContainer", {display:"flex", width: convertPercent[0], height: convertPercent[1], left:0, top:0})
+               .set("#fluidContainerRight", {display:"flex", width: convertPercent[0], height: convertPercent[1], right:0, top:-1})
+               .set("#frame1HeadlineContainer", {position:"absolute",yPercent:-50,top:"50%",left:h1Pos[1]+h1Width/3,marginBottom:0})
+               .set("#frame1Headline2", {position:"absolute", top:h2Pos[0]-h2Height/3, left:h2Pos[1]})
+               .set("#frame1Subheadline", {position:"absolute",top:subPos[0]+subHeight})
+               .set("#ctaTextContainer",{position:"absolute"})
+               .set("#accentBarImage",{height:0,marginTop:convertPercent[1]/2})
+               .set("#backgroundImage",{top:-(convertPercent[1])})
+               .set("#logoCTAContainer",{position:"absolute"});
+          
+          // SET Display & Opacity
+          tween.set(["#frame1HeadlineContainer","#frame1Subheadline","#frame1Headline2","#brandLogo","#ctaTextContainer"],{display:"none",opacity:0})
+          // SET Logo Container
+               .set("#logoContainer",{position:"absolute",display:"flex"})
+               .set("#legalContainer",{opacity:0});
+     }
+
+}
+
+function getCharsPerLine(){
+     let paragraphText = el.innerHTML.replace(/(\r\n|\n|\r)/gm, ""),
+         newParagraphText = "",
+         words = [],
+         lines = [],
+         chars = [];
+     const old = el.innerHTML;
+     exceeds = 0;
+     if(paragraphText.length > 0) {
+          words = paragraphText.split(/ (?=[^>]*(?:<|$))/);
+          for (let i=0; max = words.length, i < max; i++) {
+               if(words[i].indexOf("<span ") > -1 && words[i].indexOf("</span>") > -1) {
+                   newParagraphText += "<span>" + words[i] + "</span> ";
+               }else if(words[i].indexOf("<span ") > -1 && words[i].indexOf("</span>") < 0) {
+                   var cStyle = words[i].match(/\bstyle=(['"])(.*?)\1/gi);
+                   var colorStyle = (cStyle == null) ? "style='color:#fff'" : cStyle;
+                   var word = words[i].replace(/<\/?span[^>]*>/g,"");
+                   newParagraphText += "<span "+colorStyle[0]+" ><span>"+ word +"</span>";
+               }else {
+                   newParagraphText += "<span>" + words[i] + "</span> ";
+               }
+               el.innerHTML = newParagraphText;
+          }     
+          lines = el.getElementsByTagName('span');
+          for(let i=0;i<lines.length;i++){
+               chars.push(lines[i].innerText.replace(/<\/?span[^>]*>/g,""));
+               chars.map(function(char) {
+                    if(char.length>minChar){
+                         exceeds = 1;
+                    }
+               });
+          }
+          el.innerHTML = old;
+     }
+}
+
+function getOffset(el) {
+     const rect = el.getBoundingClientRect(),
+           top = Math.round(rect.top + window.scrollY),
+           left = Math.round(rect.left + window.scrollX);
+     var posArr = [];
+     posArr.push(top);
+     posArr.push(left);     
+     return posArr;
+}
+
+function remConvert(value) {
+     return (parseFloat(value)/16).toFixed(3)+"rem";
+}

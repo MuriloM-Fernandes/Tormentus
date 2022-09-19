@@ -1,0 +1,7 @@
+/*
+ Quantcast measurement tag
+ Copyright (c) 2008-2022, Quantcast Corp.
+*/
+'use strict';(function(g,d,e){window.__qc("fire","https://pxl.qccerttest.com");var p=function(f){return f.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,"")};d=function(f,c,k){c=document.getElementsByTagName("meta");for(var a,l,h=[],n=0;n<c.length;n++)if(a=c[n],l=a.getAttribute("name")||a.getAttribute("property"),l==k){l=h;h=l.concat;var b=k;if(a=a.getAttribute("content")){var m=b;m=-1!==m.toLowerCase().indexOf("tag")||-1!==m.toLowerCase().indexOf("keyword")||0===m.toLowerCase().indexOf("qc:");-1===
+b.toLowerCase().indexOf("tag")&&-1===b.toLowerCase().indexOf("keyword")&&0===b.toLowerCase().indexOf("qc:")||(a=a.replace(/\.+/g," "));if(m)for(b=a.split(","),a=0;a<b.length;a++)b[a]=p(b[a]);else b=p(a.replace(/,+/g," "))}else b=a;h=h.call(l,b)}0<h.length?f(h):f(!1)};e=function(f,c){var k=[],a;if("array"==={}.toString.call(c).match(/\s([a-zA-Z]+)/)[1].toLowerCase()){for(a=0;a<c.length;a++)k.push(f+"."+c[a]);return{labels:k.join(",")}}return{labels:f+"."+c}};__qc.apply(null,["rules",[g,null,[[e,"og:type"]],
+[[d,"exactmatch","og:type"]]],[g,null,[[e,"article:author"]],[[d,"exactmatch","article:author"]]],[g,null,[[e,"og:description"]],[[d,"exactmatch","og:description"]]],[g,null,[[e,"og:type"]],[[d,"exactmatch","og:type"]]],[g,null,[[e,"og:title"]],[[d,"exactmatch","og:title"]]],[g,null,[[e,"article:publisher"]],[[d,"exactmatch","article:publisher"]]]])})("p-uer8ZPXHG8WDU",window,document);

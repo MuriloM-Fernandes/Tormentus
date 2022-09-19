@@ -1,0 +1,244 @@
+/* reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+/* globais */
+@font-face {
+    font-family: thunder;
+    src: url('../font/thundertitanpunch.ttf');
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: thunder;
+    background-color: #ffffff;
+}
+
+a{
+    text-decoration: none;
+    transition: .5s;
+}
+
+h1{
+    font-size: 68px;
+    color: white;
+    text-shadow: 2px 4px 5px #3333;
+    text-align: center;
+}
+
+/* classes */
+
+.sidebar{
+    width: 100%;
+    height: 145px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 0 190px;
+    transform-origin:top;
+    transition: all 500ms;
+    background-color: rgba(0, 0, 0, 0.9);
+    
+}
+
+.sidebar.out{
+    transform: translate(-200px);
+}
+
+.logo img{
+    width: 200px;
+    height: auto;
+    position: relative;
+    top: -9px;
+    left: 70px;
+    align-items:initial;
+    display:flexbox;
+    justify-content: space-evenly;
+    flex-direction:row;
+    padding: 2px 1em 0 1em;
+
+}
+
+.navLink{
+    height: 100px;
+    align-items: center;
+    flex-direction: row;
+    justify-content:space-around;
+    position: fixed;
+    padding: 0 80px ;
+    
+}
+
+.navLink li{
+    line-height: 60px;
+    position:relative;
+    left: 20em;
+    top: -135px;
+    display: inline-block;
+    transition: all .5;
+}
+
+.navLink li a{
+    color: rgb(255, 255, 0);
+    display: block;
+    text-transform: capitalize;
+    text-shadow: #000000;
+    transition: all .5;
+    padding: 0 45px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navLink li:hover{
+    background-color: rgb(0, 41, 145);
+    transition: all .5;
+    border-radius: 15px 15px;
+    color: #000000;
+}
+
+.profile{
+    position: relative;
+    left: 1261px;
+    top: -140px;
+    width: 100%;
+    display:block;
+    justify-content: center;
+}
+
+.profile a{
+    height: 60px;
+}
+
+.profile a img{
+    height: 70px;
+    border-radius: 30%;
+    transition: all .3s;
+}
+
+.profile a img:hover{
+    height: 90px;
+    border-radius: 1%;
+    transition: all .3s;
+}
+
+/* container */
+.container{
+    background-color: rgb(0, 41, 145);
+    position: relative;
+    top: 145px;
+    height: auto;
+    padding: 10px;
+}
+
+/* home */
+.homeT{
+    background-image: url(../midia/img/top-banner.png);
+    background-position: center;
+    background-size:cover;
+    background-attachment: scroll;
+    width: 100%;
+    height: 100%;
+    border-radius: 2%;
+    padding: 20em 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.homeT h1{
+    width: 35%;
+    height: auto;
+    box-shadow: #000000;
+    padding: 10px 10px;
+    /* justify-content: center; */
+    text-align:center;
+    color: rgb(255, 255, 0);
+}
+
+.ground{
+    width: auto;
+    background-color: rgba(0, 41, 145, 0.6);
+    border-radius: 30px;
+    top: 3.7em;
+    position: absolute;
+    padding: 20px 20px;
+    justify-content: center;
+}
+
+/* conteudo */
+
+.homeImg{
+    width: 40em;
+    height: auto;
+    display: flex;
+    position:absolute;
+    justify-content:first baseline;
+    flex-direction: column;
+    left: 0;
+    right: 0;
+    padding: 2.22em 20px;
+}
+
+.homeImg img{
+    width: 90%;
+    padding: 0 30px 10px;
+}
+
+.b1{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0 30px;
+}
+
+.b1 img{
+    justify-content: center;
+    padding: 0 5px;
+}
+
+.homeText{
+    width: 70%;
+    height: auto;
+    display:table-row;
+    position:relative;
+    top: 90px;
+    left: 40.5em;
+    right: 12px;
+}
+
+.homeText p{
+    width: 65%;
+    font-size: 25px;
+    text-align: left;
+    text-transform: capitalize;
+    margin-right: 0;
+}
+
+.homeText h2{
+    width: 17%;
+    padding: 5px 5px;
+    text-align: left;
+    text-transform: capitalize;
+    font-size: 35px;
+}
+
+.Tground{
+    border-radius:30%;
+    width: 17%;
+    padding: 20px 1px;
+    background-color: rgba(32, 12, 246, 0.35);
+}
+
+.btnDefault{
+    width: 30px;
+    background-color: pink;
+    border-radius: 20px;
+}

@@ -1,0 +1,194 @@
+@font-face {
+     font-family: 'GilroyRegular';
+     src: url('Gilroy-Regular.woff') format('woff');
+}
+@font-face {
+     font-family: 'GilroyBold';
+     src: url('Gilroy-Bold.woff') format('woff');
+}
+
+#bgContainer {
+     position: absolute;
+     left:0px;
+     top:0px;
+     width:100%;
+     height:100%;
+}
+#backgroundImage {
+     position: absolute;
+     top: 0px;
+}
+
+#accentBarImage {
+     position: absolute;
+     left: 343px;
+     top: 0px;
+     width: 4px;
+     height: 91px;
+     opacity: 0;
+}
+
+#fluidContainer {
+     position: absolute;
+     left: 0px;
+     top: 7px;
+     width: 344px;
+     height: 76px;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     align-items: center;
+}
+
+#frame1HeadlineContainer {
+     width: 324px;
+     height: max-content;
+     max-height: 36px;
+     margin-bottom: 4px;
+}
+
+#frame1Headline {
+     font-family: 'GilroyRegular';
+     letter-spacing: 0.03em;
+     line-height: 1.2em;
+     text-align: center;
+     color: #fff;
+     width: 324px;
+     max-height: 36px;
+     display: table-cell;
+     vertical-align: bottom;
+}
+
+#frame1Headline2 {
+     font-family: 'GilroyBold';
+     font-size: 15px;
+     letter-spacing: 0.03em;
+     line-height: 1.2em;
+     height: max-content;
+     max-height: 36px;
+     width: 324px;
+     text-align: center;
+     color: #fff;
+}
+
+#fluidContainerRight {
+     position: absolute;
+     right: 0px;
+     top: 0px;
+     width: 381px;
+     height: 90px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+}
+#logoCTAContainer {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 100%;
+     height: max-content;
+}
+
+#frame1Subheadline {
+     font-family: 'GilroyRegular';
+     font-size: 15px;
+     letter-spacing: 0.03em;
+     line-height: 1.2em;
+     height: max-content;
+     max-height: 18px;
+     width: 354px;
+     text-align: center;
+     color: #e089e8;
+     margin-bottom: 10px;
+     margin-top: -14px;
+}
+
+#brandLogo {
+     width: 145px;
+     height: 23px;
+     object-fit: contain;
+}
+
+#ctaTextContainer {
+     position: relative;
+     background: #fff;
+     border-radius: 12px;
+     height: 23px;
+     width: auto;
+     padding: 5px 10px 5px 10px;
+}
+#ctaText {
+     font-family: 'GilroyBold';
+     font-size: 11px;
+     letter-spacing: 0.05em;
+     text-align: center;
+     color: #953894;
+}
+
+#legalContainer {
+     position: absolute;
+     right: 0px;
+     bottom: 6px;
+     width: 381px;
+     height: auto;
+     display: flex;
+     text-align: center;
+     justify-content: center;
+}
+
+#legal {
+     font-family: 'GilroyRegular';
+     font-size: 6px;
+     letter-spacing: 0.05em;
+     line-height: 1.2em;
+     text-align: center;
+     color: #fff;
+     width: 354px;
+}
+
+/* ANIMATED LOGO */
+#logoContainer {
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 145px;
+     height: 24px;
+     /*object-fit: contain;*/
+     overflow: auto;
+     display: none;
+}
+
+#logoHBOContainer {
+     position: absolute;
+     width: 62px;
+     height: 24px;
+     overflow: hidden;
+     -webkit-clip-path: inset(0% 0% 0% 0% round 0px 7px 7px 0px);
+     clip-path: inset(0% 0% 0% 0% round 0px 7px 7px 0px);
+}
+#logoHBO{
+     position: absolute;
+     width: 145px;
+     height: 24px;
+}
+
+#logoMaxContainer {
+     position: absolute;
+     width: 83px;
+     height: 24px;
+     overflow: hidden;
+     opacity: 0;
+}
+#logoMax {
+     position: absolute;
+     left: -61px;
+     width: 145px;
+     height: 24px;
+}
+/* END OF ANIMATED LOGO */
+
+/*#ctaTextContainer.winFirefox{
+     padding: 7px 13px 7px 16px !important;
+}*/

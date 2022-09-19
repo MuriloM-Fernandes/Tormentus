@@ -1,0 +1,38 @@
+
+var ftGUID_6593289="5365FBB4ED0902";
+var ftConfID_6593289="28151674";
+var ftParams_6593289="ftx=&fty=&ftadz=&ftscw=&ft_custom=&ftOBA=1&ft_agentEnv=0&ft_lat=-23.520000457763672&ft_long=-46.630001068115234&ft_referrer=https%3A%2F%2Fcc126c20846cab62c83045069ea01c11.safeframe.googlesyndication.com%2Fsafeframe%2F1-0-38%2Fhtml%2Fcontainer.html&gdpr=0&gdpr_consent=&us_privacy=&cachebuster=686927.9720698216";
+var ftKeyword_6593289="";
+var ftCustom_6593289="";
+var ftSection_6593289="";
+var ftSegment_6593289="";
+var ftSegmentList_6593289=[];
+var ftRuleMatch_6593289="0";
+var ftTimestamp_6593289="1662752112";
+var ftGeoC2_6593289="br";
+var ftGeoState_6593289="sp";
+var ftGeoCity_6593289="sao paulo";
+var ftISP_6593289="telefonica brasil s.a.";
+var ftSpeed_6593289="broadband";
+var ftDMA_6593289="76009";
+var ftLong_6593289="-46.63";
+var ftLat_6593289="-23.52";
+var ftPostal_6593289="01101-080";
+var ftTimeZone_6593289="-300";
+var ftMobileCarrier_6593289="";
+var ftImp6593289 = {};
+ftImp6593289.privacy = "x";
+ftImp6593289.guidAge = "0";
+ftImp6593289.impID = "883FA438-4B13-FE9E-D746-666950351CE5";
+ftImp6593289.duid = "FT:5365FBB4ED0902";
+
+ftImp6593289.ft_tpplid = "";
+ftImp6593289.ft_c = {};
+ftImp6593289.gdpr = "0";
+ftImp6593289.gdpr_consent = "";
+ftImp6593289.gdpr_pd = "";
+ftImp6593289.oob_consent = "";
+ftImp6593289.gdprStoredConsent = "";
+ftImp6593289.us_privacy = "";
+
+document.write('<scr'+'ipt src="https://cdn.flashtalking.com/xre/659/6593289/4014590/js/j-6593289-4014590.js" id="ftscript_m6593289" name="ftscript_m6593289"></scr'+'ipt>');
